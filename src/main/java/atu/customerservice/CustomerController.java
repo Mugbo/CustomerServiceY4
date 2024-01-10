@@ -8,22 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CustomerController {
-    private final OrderServiceClient orderServiceClient;
     private final CustomerService customerService;
 
 
     @Autowired
-    public CustomerController(OrderServiceClient orderServiceClient, CustomerService customerService) {
-        this.orderServiceClient = orderServiceClient;
+    public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
-    @PostMapping("/confirmCustomer")
-    public Customer confirmCustomerRegistration(@RequestBody Customer customer){
-        return orderServiceClient.customerDetails(customer);
-    }
-    @PostMapping("/confirmCustomerLocal")
-    public String confirmCustomerRegistrationMessage(@RequestBody Customer customer){
-        return customerService.confirmCustomer(customer);
+    @PostMapping("/calculateDelivery")
+    public DeliveryInfo calculateDelivery(@RequestBody Customer customer) {
+        return customerService.calculateDeliveryInfo(customer);
     }
 }

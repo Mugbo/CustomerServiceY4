@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Customer {
-    private String region;
-
+@NoArgsConstructor
+public class DeliveryInfo {
+    private int deliveryTime;
+    private double deliveryPrice;
 }
