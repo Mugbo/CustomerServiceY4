@@ -1,6 +1,7 @@
 package atu.customerservice;
 
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ public class CustomerController {
     }
 
     @PostMapping("/calculateDelivery")
-    public DeliveryInfo calculateDelivery(@RequestBody Customer customer) {
+    public DeliveryInfo calculateDelivery(@Valid @RequestBody Customer customer) {
         return customerService.calculateDeliveryInfo(customer);
     }
 }
