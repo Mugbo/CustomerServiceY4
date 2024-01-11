@@ -1,5 +1,6 @@
 package atu.customerservice;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class CustomerService {
         return deliveryPrices;
     }
 
-    public DeliveryInfo calculateDeliveryInfo(Customer customer) {
+    public DeliveryInfo calculateDeliveryInfo(@Valid Customer customer) {
         String region = customer.getRegion();
         int deliveryTime = getDeliveryTime(region);
         double deliveryPrice = getDeliveryPrice(region);
